@@ -1,6 +1,7 @@
 let myLibrary = [];
 
 const contentBody = document.querySelector("#contentBody");
+const newBook = document.querySelector("button");
 
 function Book(title, author, numberOfPages, status) {
     this.title = title
@@ -35,3 +36,6 @@ function displayBooks() {
 };
 
 displayBooks()
+
+
+newBook.addEventListener("click", () => console.log(this))
