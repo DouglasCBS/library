@@ -3,6 +3,40 @@
     padding: 0;
 }
 
+header {
+    background-color: rgb(233, 232, 232);
+    border: 1px solid gray;
+    box-shadow: 1px 1px 1px black;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    margin: 15px;
+}
+
+header button {
+    height: 45px;
+    width: 60px;
+    background-color: rgb(204, 203, 203);
+    border-radius: 5px;
+    margin: 15px;
+}
+
 body {
     height: 100vh;
+    font-size: 20px;
+}
+
+#contentBody div {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 5px 5px 15px gray;
+}
+
+#contentBody {
+    display: flex;
+    gap: 5px;
 }

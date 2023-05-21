@@ -25,7 +25,13 @@ addBookToLibrary(princes);
 // end of temporary code
 
 function displayBooks() {
+    const book = [];
     for (let i = 0; i < myLibrary.length; i++) {
-        console.log(myLibrary[i])
+        book[i] = document.createElement("div");
+    book[i].setAttribute("style", "white-space: pre;");
+    contentBody.appendChild(book[i]);
+    book[i].textContent = `Title: ${myLibrary[i].title} \r\nAuthor: ${myLibrary[i].author} \r\nNumber of pages: ${myLibrary[i].numberOfPages} \r\nStatus: ${myLibrary[i].status}`;
     }
 };
+
+displayBooks()
