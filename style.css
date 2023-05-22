@@ -61,4 +61,5 @@ form {
 form button {
     height: 25px;
     width: 50px;
+    margin-top: 10px;
 }

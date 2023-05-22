@@ -38,7 +38,7 @@ function displayBooks() {
 
 displayBooks();
 
-newBook.addEventListener("click", () => console.log(this));
+newBook.addEventListener("click", openForm);
 
 function openForm() {
     const bookForm = document.createElement("form");
@@ -86,10 +86,14 @@ function openForm() {
     bookForm.appendChild(InputStatus);
 
     const submitButton =  document.createElement("button");
-    submitButton.setAttribute("type", "submit")
+    submitButton.setAttribute("type", "submit");
     bookForm.appendChild(submitButton);
     submitButton.textContent = "submit";
 
-}
+    const clearButton = document.createElement("button");
+    clearButton.setAttribute("type", "button");
+    bookForm.appendChild(clearButton);
+    clearButton.textContent = "Close";
+    clearButton.addEventListener("click", () => body.removeChild(bookForm))
 
-openForm()
+}
