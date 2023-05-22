@@ -89,6 +89,12 @@ function openForm() {
     submitButton.setAttribute("type", "submit");
     bookForm.appendChild(submitButton);
     submitButton.textContent = "submit";
+    bookForm.addEventListener("submit", submittedBook)
+
+    function submittedBook(e) {
+        e.preventDefault()
+        console.log("FUNCIONOU")
+    }
 
     const clearButton = document.createElement("button");
     clearButton.setAttribute("type", "button");
