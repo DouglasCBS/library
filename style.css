@@ -41,3 +41,17 @@ body {
     display: flex;
     gap: 5px;
 }
+
+form {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    padding: 20px;
+    background-color: rgb(240, 239, 239);
+    top: 10%;
+    bottom: 50%;
+    left: 50%;
+    right: 50%;
+    border: solid 1px black;
+    box-shadow: 0 0 100px rgb(122, 122, 122);
+}

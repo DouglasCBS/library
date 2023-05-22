@@ -2,6 +2,7 @@ let myLibrary = [];
 
 const contentBody = document.querySelector("#contentBody");
 const newBook = document.querySelector("button");
+const body = document.querySelector("body");
 
 function Book(title, author, numberOfPages, status) {
     this.title = title
@@ -43,7 +44,7 @@ function openForm() {
     const bookForm = document.createElement("form");
     bookForm.setAttribute("action", ".");
     bookForm.setAttribute("method", "post");
-    contentBody.appendChild(bookForm);
+    body.appendChild(bookForm);
     
     const LabelTitle = document.createElement("label");
     LabelTitle.setAttribute("for", "title");
@@ -75,48 +76,14 @@ function openForm() {
     InputNOP.setAttribute("required", "");
     bookForm.appendChild(InputNOP);
 
-    const fieldSet = document.createElement("fieldset");
-    bookForm.appendChild(fieldSet);
-    const legend = document.createElement("legend");
-    legend.textContent = "Status: ";
-    fieldSet.appendChild(legend);
-
-    const radioList = document.createElement("ul");
-    fieldSet.appendChild(radioList);
-    const listOne = document.createElement("li");
-    const listTwo = document.createElement("li");
-    const listThree = document.createElement("li");
-    radioList.appendChild(listOne);
-    radioList.appendChild(listTwo);
-    radioList.appendChild(listThree);
-
-    const LabelStatusOne = document.createElement("label");
-    LabelStatusOne.setAttribute("for", "notRead");
-    LabelStatusOne.textContent = "not read ";
-    listOne.appendChild(LabelStatusOne);
-    const InputStatusOne = document.createElement("input");
-    InputStatusOne.setAttribute("type", "radio");
-    InputStatusOne.setAttribute("id", "notRead");
-    listOne.appendChild(InputStatusOne);
-
-    const LabelStatusTwo = document.createElement("label");
-    LabelStatusTwo.setAttribute("for", "Read");
-    LabelStatusTwo.textContent = "read ";
-    listTwo.appendChild(LabelStatusTwo);
-    const InputStatusTwo = document.createElement("input");
-    InputStatusTwo.setAttribute("type", "radio");
-    InputStatusTwo.setAttribute("id", "Read");
-    listTwo.appendChild(InputStatusTwo);
-
-    const LabelStatusThree = document.createElement("label");
-    LabelStatusThree.setAttribute("for", "dropped");
-    LabelStatusThree.textContent = "dropped ";
-    listThree.appendChild(LabelStatusThree);
-    const InputStatusThree = document.createElement("input");
-    InputStatusThree.setAttribute("type", "radio");
-    InputStatusThree.setAttribute("id", "dropped");
-    listThree.appendChild(InputStatusThree);
-
+    const LabelStatus = document.createElement("label");
+    LabelStatus.setAttribute("for", "read");
+    LabelStatus.textContent = "did you read it already?";
+    bookForm.appendChild(LabelStatus);
+    const InputStatus = document.createElement("input");
+    InputStatus.setAttribute("type", "checkbox");
+    InputStatus.setAttribute("id", "read");
+    bookForm.appendChild(InputStatus);
 
 }
 
