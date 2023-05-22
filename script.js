@@ -85,6 +85,11 @@ function openForm() {
     InputStatus.setAttribute("id", "read");
     bookForm.appendChild(InputStatus);
 
+    const submitButton =  document.createElement("button");
+    submitButton.setAttribute("type", "submit")
+    bookForm.appendChild(submitButton);
+    submitButton.textContent = "submit";
+
 }
 
 openForm()
