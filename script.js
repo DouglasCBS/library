@@ -17,18 +17,26 @@ function Book(title, author, numberOfPages, status) {
 };
 
 function addBookToLibrary(book) {
-    myLibrary.push(book)
+    myLibrary.push(book);
 };
 
 function displayBooks() {
     const book = [];
+    const button = [];
     const divs = document.querySelectorAll("div");
     divs.forEach(div => contentBody.removeChild(div));
     for (let i = 0; i < myLibrary.length; i++) {
         book[i] = document.createElement("div");
+        book[i].setAttribute("data-index", `${[i]}`)
         book[i].setAttribute("style", "white-space: pre;");
         contentBody.appendChild(book[i]);
         book[i].textContent = `Title: ${myLibrary[i].title} \r\nAuthor: ${myLibrary[i].author} \r\nNumber of pages: ${myLibrary[i].numberOfPages} \r\nStatus: ${myLibrary[i].status}`;
+
+        button[i] = document.createElement("button");
+        button[i].setAttribute("type", "button");
+        button[i].textContent = "remove";
+        book[i].appendChild(button[i]);
+        button[i].addEventListener("click", () => console.log(book[i].dataset.index))
     }
 };
 
