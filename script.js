@@ -1,8 +1,8 @@
 let myLibrary = [];
-let InputTitle
-let InputAuthor
-let InputNOP
-let InputStatus
+let InputTitle = undefined;
+let InputAuthor = undefined;
+let InputNOP = undefined;
+let InputStatus = false;
 
 const contentBody = document.querySelector("#contentBody");
 const newBook = document.querySelector("button");
@@ -19,17 +19,6 @@ function addBookToLibrary(book) {
     myLibrary.push(book)
 };
 
-// temporary code to better see array
-
-const waves = new Book("waves", "ted", 10, "reading");
-const princes = new Book("princes", "jonas", 30, "dropped");
-
-addBookToLibrary(waves);
-addBookToLibrary(princes);
-
-
-// end of temporary code
-
 function displayBooks() {
     const book = [];
     for (let i = 0; i < myLibrary.length; i++) {
@@ -39,8 +28,6 @@ function displayBooks() {
     book[i].textContent = `Title: ${myLibrary[i].title} \r\nAuthor: ${myLibrary[i].author} \r\nNumber of pages: ${myLibrary[i].numberOfPages} \r\nStatus: ${myLibrary[i].status}`;
     }
 };
-
-displayBooks();
 
 newBook.addEventListener("click", openForm);
 
@@ -99,14 +86,20 @@ function openForm() {
     bookForm.appendChild(clearButton);
     clearButton.textContent = "Close";
 
-    clearButton.addEventListener("click", () => body.removeChild(bookForm))
+    clearButton.addEventListener("click", () => body.removeChild(bookForm));
 
-    bookForm.addEventListener("submit", submittedBook)
+    bookForm.addEventListener("submit", submittedBook);
 
     function submittedBook(e) {
-        e.preventDefault()
-        return [InputTitle.value, InputAuthor.value, InputNOP.value, InputStatus.checked]
-    }
-}
-
-console.log(InputTitle)
+        e.preventDefault();
+        let inputVariableName = [InputTitle.value];
+        inputVariableName[0] = new Book(InputTitle.value, InputAuthor.value, InputNOP.value, InputStatus.checked);
+        addBookToLibrary(inputVariableName[0]);
+        displayBooks();
+        body.removeChild(bookForm);
+        InputNOP = undefined;
+        InputAuthor = undefined;
+        InputTitle = undefined;
+        InputStatus = false;
+    };
+};
