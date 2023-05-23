@@ -3,7 +3,7 @@ let InputTitle = undefined;
 let InputAuthor = undefined;
 let InputNOP = undefined;
 let InputStatus = false;
-let bookForm
+let bookForm = "";
 
 const contentBody = document.querySelector("#contentBody");
 const newBook = document.querySelector("button");
@@ -35,70 +35,73 @@ function displayBooks() {
 newBook.addEventListener("click", openForm);
 
 function openForm() {
-    bookForm = document.createElement("form");
-    bookForm.setAttribute("action", ".");
-    bookForm.setAttribute("method", "post");
-    body.appendChild(bookForm);
-    
-    const LabelTitle = document.createElement("label");
-    LabelTitle.setAttribute("for", "title");
-    LabelTitle.textContent = "Title: ";
-    bookForm.appendChild(LabelTitle);
-    InputTitle = document.createElement("input");
-    InputTitle.setAttribute("type", "text");
-    InputTitle.setAttribute("id", "title");
-    InputTitle.setAttribute("required", "");
-    bookForm.appendChild(InputTitle);
+    if (bookForm !== "") {return}
+    else {
+        bookForm = document.createElement("form");
+        bookForm.setAttribute("action", ".");
+        bookForm.setAttribute("method", "post");
+        body.appendChild(bookForm);
+        
+        const LabelTitle = document.createElement("label");
+        LabelTitle.setAttribute("for", "title");
+        LabelTitle.textContent = "Title: ";
+        bookForm.appendChild(LabelTitle);
+        InputTitle = document.createElement("input");
+        InputTitle.setAttribute("type", "text");
+        InputTitle.setAttribute("id", "title");
+        InputTitle.setAttribute("required", "");
+        bookForm.appendChild(InputTitle);
 
-    const LabelAuthor = document.createElement("label");
-    LabelAuthor.setAttribute("for", "author");
-    LabelAuthor.textContent = "Author: ";
-    bookForm.appendChild(LabelAuthor);
-    InputAuthor = document.createElement("input");
-    InputAuthor.setAttribute("type", "text");
-    InputAuthor.setAttribute("id", "author");
-    InputAuthor.setAttribute("required", "");
-    bookForm.appendChild(InputAuthor);
+        const LabelAuthor = document.createElement("label");
+        LabelAuthor.setAttribute("for", "author");
+        LabelAuthor.textContent = "Author: ";
+        bookForm.appendChild(LabelAuthor);
+        InputAuthor = document.createElement("input");
+        InputAuthor.setAttribute("type", "text");
+        InputAuthor.setAttribute("id", "author");
+        InputAuthor.setAttribute("required", "");
+        bookForm.appendChild(InputAuthor);
 
-    const LabelNOP = document.createElement("label");
-    LabelNOP.setAttribute("for", "NOP");
-    LabelNOP.textContent = "Number Of Pages: ";
-    bookForm.appendChild(LabelNOP);
-    InputNOP = document.createElement("input");
-    InputNOP.setAttribute("type", "number");
-    InputNOP.setAttribute("id", "NOP");
-    InputNOP.setAttribute("required", "");
-    bookForm.appendChild(InputNOP);
+        const LabelNOP = document.createElement("label");
+        LabelNOP.setAttribute("for", "NOP");
+        LabelNOP.textContent = "Number Of Pages: ";
+        bookForm.appendChild(LabelNOP);
+        InputNOP = document.createElement("input");
+        InputNOP.setAttribute("type", "number");
+        InputNOP.setAttribute("id", "NOP");
+        InputNOP.setAttribute("required", "");
+        bookForm.appendChild(InputNOP);
 
-    const LabelStatus = document.createElement("label");
-    LabelStatus.setAttribute("for", "read");
-    LabelStatus.textContent = "did you read it already?";
-    bookForm.appendChild(LabelStatus);
-    InputStatus = document.createElement("input");
-    InputStatus.setAttribute("type", "checkbox");
-    InputStatus.setAttribute("id", "read");
-    bookForm.appendChild(InputStatus);
+        const LabelStatus = document.createElement("label");
+        LabelStatus.setAttribute("for", "read");
+        LabelStatus.textContent = "did you read it already?";
+        bookForm.appendChild(LabelStatus);
+        InputStatus = document.createElement("input");
+        InputStatus.setAttribute("type", "checkbox");
+        InputStatus.setAttribute("id", "read");
+        bookForm.appendChild(InputStatus);
 
-    const submitButton =  document.createElement("button");
-    submitButton.setAttribute("type", "submit");
-    bookForm.appendChild(submitButton);
-    submitButton.textContent = "submit";
+        const submitButton =  document.createElement("button");
+        submitButton.setAttribute("type", "submit");
+        bookForm.appendChild(submitButton);
+        submitButton.textContent = "submit";
 
-    const clearButton = document.createElement("button");
-    clearButton.setAttribute("type", "button");
-    bookForm.appendChild(clearButton);
-    clearButton.textContent = "Close";
+        const clearButton = document.createElement("button");
+        clearButton.setAttribute("type", "button");
+        bookForm.appendChild(clearButton);
+        clearButton.textContent = "Close";
 
-    clearButton.addEventListener("click", () => {
-        body.removeChild(bookForm)
-        InputNOP = undefined;
-        InputAuthor = undefined;
-        InputTitle = undefined;
-        InputStatus = false;
-    });
+        clearButton.addEventListener("click", () => {
+            body.removeChild(bookForm)
+            InputNOP = undefined;
+            InputAuthor = undefined;
+            InputTitle = undefined;
+            InputStatus = false;
+            bookForm = "";
+        });
 
-    bookForm.addEventListener("submit", submittedBook);
-
+        bookForm.addEventListener("submit", submittedBook);
+    }
 };
 
 function submittedBook(e) {
@@ -112,4 +115,5 @@ function submittedBook(e) {
     InputAuthor = undefined;
     InputTitle = undefined;
     InputStatus = false;
+    bookForm = "";
 };
