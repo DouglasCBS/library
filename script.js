@@ -21,11 +21,13 @@ function addBookToLibrary(book) {
 
 function displayBooks() {
     const book = [];
+    const divs = document.querySelectorAll("div");
+    divs.forEach(div => contentBody.removeChild(div));
     for (let i = 0; i < myLibrary.length; i++) {
         book[i] = document.createElement("div");
-    book[i].setAttribute("style", "white-space: pre;");
-    contentBody.appendChild(book[i]);
-    book[i].textContent = `Title: ${myLibrary[i].title} \r\nAuthor: ${myLibrary[i].author} \r\nNumber of pages: ${myLibrary[i].numberOfPages} \r\nStatus: ${myLibrary[i].status}`;
+        book[i].setAttribute("style", "white-space: pre;");
+        contentBody.appendChild(book[i]);
+        book[i].textContent = `Title: ${myLibrary[i].title} \r\nAuthor: ${myLibrary[i].author} \r\nNumber of pages: ${myLibrary[i].numberOfPages} \r\nStatus: ${myLibrary[i].status}`;
     }
 };
 
