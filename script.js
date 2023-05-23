@@ -36,8 +36,12 @@ function displayBooks() {
         button[i].setAttribute("type", "button");
         button[i].textContent = "remove";
         book[i].appendChild(button[i]);
-        button[i].addEventListener("click", () => console.log(book[i].dataset.index))
-    }
+        button[i].addEventListener("click", () => {
+            let bookIndex = book[i].dataset.index;
+            myLibrary.splice(bookIndex, 1);
+            displayBooks();
+        });
+    };
 };
 
 newBook.addEventListener("click", openForm);
