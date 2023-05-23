@@ -25,12 +25,21 @@ function displayBooks() {
     const button = [];
     const divs = document.querySelectorAll("div");
     divs.forEach(div => contentBody.removeChild(div));
+    let isRead = "unread"
     for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].status === true) {isRead = "read"}
+        else if (myLibrary[i].status === false) {isRead = "unread"}
         book[i] = document.createElement("div");
         book[i].setAttribute("data-index", `${[i]}`)
         book[i].setAttribute("style", "white-space: pre;");
         contentBody.appendChild(book[i]);
-        book[i].textContent = `Title: ${myLibrary[i].title} \r\nAuthor: ${myLibrary[i].author} \r\nNumber of pages: ${myLibrary[i].numberOfPages} \r\nStatus: ${myLibrary[i].status}`;
+        book[i].textContent = `Title: ${myLibrary[i].title} \r\nAuthor: ${myLibrary[i].author} \r\nNumber of pages: ${myLibrary[i].numberOfPages} \r\nStatus: ${isRead}`;
+
+        book[i].addEventListener("click", () => {
+            if (myLibrary[i].status === true) {myLibrary[i].status = false}
+            else if (myLibrary[i].status === false) {myLibrary[i].status = true}
+            displayBooks()
+        })
 
         button[i] = document.createElement("button");
         button[i].setAttribute("type", "button");
