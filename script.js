@@ -89,17 +89,18 @@ function openForm() {
     submitButton.setAttribute("type", "submit");
     bookForm.appendChild(submitButton);
     submitButton.textContent = "submit";
-    bookForm.addEventListener("submit", submittedBook)
-
-    function submittedBook(e) {
-        e.preventDefault()
-        console.log("FUNCIONOU")
-    }
 
     const clearButton = document.createElement("button");
     clearButton.setAttribute("type", "button");
     bookForm.appendChild(clearButton);
     clearButton.textContent = "Close";
+
     clearButton.addEventListener("click", () => body.removeChild(bookForm))
 
+    bookForm.addEventListener("submit", submittedBook)
+
+    function submittedBook(e) {
+        e.preventDefault()
+        return [InputTitle.value, InputAuthor.value, InputNOP.value, InputStatus.checked]
+    }
 }
