@@ -1,4 +1,8 @@
 let myLibrary = [];
+let InputTitle
+let InputAuthor
+let InputNOP
+let InputStatus
 
 const contentBody = document.querySelector("#contentBody");
 const newBook = document.querySelector("button");
@@ -50,7 +54,7 @@ function openForm() {
     LabelTitle.setAttribute("for", "title");
     LabelTitle.textContent = "Title: ";
     bookForm.appendChild(LabelTitle);
-    const InputTitle = document.createElement("input");
+    InputTitle = document.createElement("input");
     InputTitle.setAttribute("type", "text");
     InputTitle.setAttribute("id", "title");
     InputTitle.setAttribute("required", "");
@@ -60,7 +64,7 @@ function openForm() {
     LabelAuthor.setAttribute("for", "author");
     LabelAuthor.textContent = "Author: ";
     bookForm.appendChild(LabelAuthor);
-    const InputAuthor = document.createElement("input");
+    InputAuthor = document.createElement("input");
     InputAuthor.setAttribute("type", "text");
     InputAuthor.setAttribute("id", "author");
     InputAuthor.setAttribute("required", "");
@@ -70,7 +74,7 @@ function openForm() {
     LabelNOP.setAttribute("for", "NOP");
     LabelNOP.textContent = "Number Of Pages: ";
     bookForm.appendChild(LabelNOP);
-    const InputNOP = document.createElement("input");
+    InputNOP = document.createElement("input");
     InputNOP.setAttribute("type", "number");
     InputNOP.setAttribute("id", "NOP");
     InputNOP.setAttribute("required", "");
@@ -80,7 +84,7 @@ function openForm() {
     LabelStatus.setAttribute("for", "read");
     LabelStatus.textContent = "did you read it already?";
     bookForm.appendChild(LabelStatus);
-    const InputStatus = document.createElement("input");
+    InputStatus = document.createElement("input");
     InputStatus.setAttribute("type", "checkbox");
     InputStatus.setAttribute("id", "read");
     bookForm.appendChild(InputStatus);
@@ -104,3 +108,5 @@ function openForm() {
         return [InputTitle.value, InputAuthor.value, InputNOP.value, InputStatus.checked]
     }
 }
+
+console.log(InputTitle)
