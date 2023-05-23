@@ -3,6 +3,7 @@ let InputTitle = undefined;
 let InputAuthor = undefined;
 let InputNOP = undefined;
 let InputStatus = false;
+let bookForm
 
 const contentBody = document.querySelector("#contentBody");
 const newBook = document.querySelector("button");
@@ -34,7 +35,7 @@ function displayBooks() {
 newBook.addEventListener("click", openForm);
 
 function openForm() {
-    const bookForm = document.createElement("form");
+    bookForm = document.createElement("form");
     bookForm.setAttribute("action", ".");
     bookForm.setAttribute("method", "post");
     body.appendChild(bookForm);
@@ -88,20 +89,27 @@ function openForm() {
     bookForm.appendChild(clearButton);
     clearButton.textContent = "Close";
 
-    clearButton.addEventListener("click", () => body.removeChild(bookForm));
-
-    bookForm.addEventListener("submit", submittedBook);
-
-    function submittedBook(e) {
-        e.preventDefault();
-        let inputVariableName = [InputTitle.value];
-        inputVariableName[0] = new Book(InputTitle.value, InputAuthor.value, InputNOP.value, InputStatus.checked);
-        addBookToLibrary(inputVariableName[0]);
-        displayBooks();
-        body.removeChild(bookForm);
+    clearButton.addEventListener("click", () => {
+        body.removeChild(bookForm)
         InputNOP = undefined;
         InputAuthor = undefined;
         InputTitle = undefined;
         InputStatus = false;
-    };
+    });
+
+    bookForm.addEventListener("submit", submittedBook);
+
+};
+
+function submittedBook(e) {
+    e.preventDefault();
+    let inputVariableName = [InputTitle.value];
+    inputVariableName[0] = new Book(InputTitle.value, InputAuthor.value, InputNOP.value, InputStatus.checked);
+    addBookToLibrary(inputVariableName[0]);
+    displayBooks();
+    body.removeChild(bookForm);
+    InputNOP = undefined;
+    InputAuthor = undefined;
+    InputTitle = undefined;
+    InputStatus = false;
 };
